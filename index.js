@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postsRoute = require("./routes/posts");
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 dotenv.config();
 
@@ -27,9 +27,9 @@ app.use(morgan("common"));
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postsRoute);
-// app.get("/", (req, res) => {
-//   res.send("Welcome to HomePage!");
-// });
+app.get("/", (req, res) => {
+  res.send("Welcome to Social Media API HomePage!");
+});
 
 // app.use("api/user", (req, res) => {
 //   res.send("Welcome to Users!");
